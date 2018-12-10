@@ -50,7 +50,7 @@ const CarShopView = ({ stepIndex, changeData, dataProvider, data }) => {
 
 CarShopView.propTypes = {
     changeData: PropTypes.func.isRequired,
-    dataProvider: PropTypes.oneOf([PropTypes.array, PropTypes.object]),
+    dataProvider: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
     data: PropTypes.object.isRequired,
     stepIndex: PropTypes.number.isRequired,
 }

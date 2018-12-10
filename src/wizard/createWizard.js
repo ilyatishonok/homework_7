@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import StepNavigator from '../StepNavigator';
-import ProgressBar from '../ProgressBar';
+import StepNavigator from '../components/StepNavigator';
+import ProgressBar from '../components/ProgressBar';
 
 const Form = styled.form`
     display: inline-block;
@@ -50,7 +50,7 @@ const createWizard = steps => {
                 this.onChange = this.onChange.bind(this);
             }
 
-            onChange = newData => {
+            onChange(newData) {
                 this.setState(({ data }) => ({
                     data: {
                         ...data,
@@ -131,8 +131,7 @@ const createWizard = steps => {
 
             render() {
                 const { data, stepIndex, isSummary } = this.state;
-
-                const { validate } = isSummary ? false : steps[stepIndex];
+                const validate = isSummary ? false : steps[stepIndex].validate;
                 const isNextButtonDisabled = validate ? !validate(data) : false;
 
                 return (
@@ -151,7 +150,7 @@ const createWizard = steps => {
             }
 
             static propTypes = {
-                dataProvider: PropTypes.oneOf([PropTypes.array, PropTypes.object]),     
+                dataProvider: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),     
             }
         }
     }

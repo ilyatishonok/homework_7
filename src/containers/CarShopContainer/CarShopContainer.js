@@ -1,27 +1,24 @@
-import createWizard from '../../components/WizardForm';
+import createWizard from '../../wizard/createWizard';
 import CarShopView from '../../components/CarShopView';
 import Summary from '../../components/Summary';
 
 const steps = [
     {
         title: 'Brands',
-        id: 'brandStep',
-        validate: stepData => !!stepData.brand,
+        validate: data => !!data.brand,
     },
     {
         title: 'Models',
-        id: 'modelStep',
         processStepData: (data, provider) => {
             const { model, brand } = data;
             if (!provider.models[brand].includes(model)) {
                 return { model: null };
             }
         },
-        validate: stepData => !!stepData.model,
+        validate: data => !!data.model,
     },
     {
         title: 'Fuel Types',
-        id: 'fuelTypeStep',
         processStepData: (data, provider) => {
             const { model, brand, fuelType } = data;
 
@@ -29,11 +26,10 @@ const steps = [
                 return { fuelType: null };
             }
         },
-        validate: stepData => !!stepData.fuelType,
+        validate: data => !!data.fuelType,
     },
     {
         title: 'Transmission Types',
-        id: 'transmissionTypeStep',
         processStepData: (data, provider) => {
             const { model, brand, fuelType } = data;
             
@@ -41,8 +37,8 @@ const steps = [
                 return { transmissionType: null };
             }
         },
-        validate: stepData => !!stepData.transmissionType,
-    }
+        validate: data => !!data.transmissionType,
+    },
 ]
 
 export default createWizard(steps)(CarShopView, Summary);

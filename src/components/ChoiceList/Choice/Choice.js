@@ -9,8 +9,13 @@ const ChoiceContainer = styled.div`
     border-radius: 10px;
     border: 1px solid black;
     cursor: pointer;
-    background: ${({ selected }) => ( selected && 'green')};
-    color: ${({ selected }) => (selected && 'white')}
+    background: ${({ selected }) => (selected && 'green')};
+    color: ${({ selected }) => (selected && 'white')};
+
+    &:hover {
+        background: ${({ selected }) => (!selected && '#2196F3')};
+        color: white;
+    }
 `;
 
 export default class Choice extends Component {

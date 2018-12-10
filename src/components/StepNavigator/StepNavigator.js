@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StepContainer = styled.div``;
+
 const NextButton = styled.button`
     padding: 10px;
     border: 1px solid black;
@@ -19,6 +20,7 @@ const NextButton = styled.button`
         background: ${props => props.disabled ? 'gray' : 'blue'};
     }
 `;
+
 const PreviousButton = styled.button`
     padding: 10px;
     border: 1px solid black;
